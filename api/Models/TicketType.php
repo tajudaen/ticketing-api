@@ -8,6 +8,7 @@ class TicketType extends Model
 {
     public function __construct()
     {
+        parent::__construct();
         $this->table = "ticket_type";
     }
 
@@ -27,5 +28,12 @@ class TicketType extends Model
         } else {
             return false;
         }
+    }
+
+    public function getTypes()
+    {
+        $types = $this->db->query("SELECT * FROM $this->table")->results();
+
+        return $types;
     }
 }

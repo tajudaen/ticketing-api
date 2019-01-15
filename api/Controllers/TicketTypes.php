@@ -71,4 +71,18 @@ class TicketTypes extends Controller
         }
     }
 
+    public function all()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if (count($this->model->getTypes())) {
+                echo json_encode($this->model->getTypes());
+            } else {
+                http_response_code(404);
+            }
+        } else {
+            echo json_encode(['message' => 'Method not allowed', 'status' => 405]);
+            http_response_code(405);
+        }
+    }
+
 }

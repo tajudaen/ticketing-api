@@ -26,7 +26,7 @@ class Database
                 $this->pass
             );
 
-            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_SILENT);
 
         } catch (\PDOException $e) {
             $this->error = $e->getMessage();
